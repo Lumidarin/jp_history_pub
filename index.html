@@ -24,6 +24,8 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14p
 .mapctl{position:absolute;right:12px;bottom:12px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;max-width:calc(100% - 24px);max-height:calc(100% - 24px);pointer-events:none}
 .mapctl>*{pointer-events:auto}
 .toggles{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;background:var(--glass);border:1px solid var(--line);border-radius:999px;padding:4px;box-shadow:0 4px 16px rgba(0,0,0,.12);backdrop-filter:blur(4px)}
+.toggles[hidden]{display:none}
+.layers-btn{font:inherit;font-size:12.5px;color:var(--accent);background:var(--glass);border:1px solid var(--line);padding:3px 12px;border-radius:999px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.12);backdrop-filter:blur(4px)}
 .chip{font:inherit;font-size:12.5px;border:1px solid transparent;background:transparent;color:var(--muted);padding:2px 11px;border-radius:999px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
 button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
@@ -224,7 +226,8 @@ aside h2{font-family:var(--display);font-weight:900;font-size:24px;line-height:1
       </div>
       <div class="blinks" id="blinks"></div>
       <div class="mapctl" id="mapctl">
-      <div class="toggles" role="group" aria-label="图层">
+      <button class="layers-btn" id="layers-btn" aria-expanded="false" aria-controls="layers-group">图层 ▸</button>
+      <div class="toggles" id="layers-group" role="group" aria-label="图层" hidden>
       <button class="chip" id="t-prov" aria-pressed="true">国名</button>
       <button class="chip" id="t-blk" aria-pressed="true">分区线</button>
       <button class="chip" id="t-faction" aria-pressed="true">势力名</button>
@@ -702,6 +705,9 @@ document.addEventListener('keydown', e => { if (e.target.closest('input,textarea
 
 /* ---------- toggles ---------- */
 const toggles = {};
+/* 图层栏默认折叠，点“图层”展开/收起 */
+const layersBtn = document.getElementById('layers-btn'), layersGroup = document.getElementById('layers-group');
+layersBtn.onclick = () => { const open = layersGroup.hidden; layersGroup.hidden = !open; layersBtn.setAttribute('aria-expanded', String(open)); layersBtn.textContent = open ? '图层 ▾' : '图层 ▸'; };
 function bindToggle(id, fn){ const b=document.getElementById(id); const saved=store('jp-map-'+id); if (saved!==null) b.setAttribute('aria-pressed', saved); const apply=()=>{ toggles[id]=b.getAttribute('aria-pressed')==='true'; fn(toggles[id]); }; b.onclick=()=>{ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true'); store('jp-map-'+id, b.getAttribute('aria-pressed')); apply(); }; apply(); }
 bindToggle('t-prov', on => { plabG.attr('display', on?null:'none'); applyLabelSizes(); });
 bindToggle('t-blk', () => applyLabelSizes());
