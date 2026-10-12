@@ -579,8 +579,8 @@ function bindTip(el, fn, side){ el.onmouseenter = el.onfocus = () => ptip(el, fn
 const HEAD = {
   warrior: '<path d="M27 25c0-10 6-16 13-16s13 6 13 16v3H27z" fill="#2b2a28"/><path d="M24 27h32l-3 4H27z" fill="#2b2a28"/><path d="M31 13l-7-9M49 13l7-9" stroke="#c9a54a" stroke-width="3" stroke-linecap="round"/>',
   noble: '<path d="M31 22c0-12 4-19 10-19s9 6 9 19z" fill="#1f1e1c"/><rect x="29" y="21" width="22" height="5" rx="2" fill="#1f1e1c"/>',
-  courtier: '<path d="M30 22h20v-7c0-5-4-8-10-8s-10 3-10 8z" fill="#1f1e1c"/><path d="M47 9c6 -3 10 2 9 9" stroke="#1f1e1c" stroke-width="3" fill="none"/>',
-  monk: '<circle cx="40" cy="26" r="11.5" fill="#e9d2b4"/>',
+  courtier: '<path d="M30 25h20v-7c0-5-4-8-10-8s-10 3-10 8z" fill="#1f1e1c"/><path d="M47 12c6 -3 10 2 9 9" stroke="#1f1e1c" stroke-width="3" fill="none"/>',
+  monk: '<g/>',  // 光头即底下的头部，不再另画一个圆
   woman: '<path d="M27 30c0-14 5-21 13-21s13 7 13 21v28h-5V32H32v26h-5z" fill="#1f1e1c"/>',
 };
 function avatarSVG(p, i){
