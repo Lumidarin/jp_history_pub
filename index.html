@@ -57,6 +57,7 @@ text{pointer-events:none}
 .rlab{font-family:var(--body);font-weight:700;paint-order:stroke;stroke:var(--halo);stroke-width:.3em;stroke-linejoin:round;text-anchor:middle}
 @keyframes march{to{stroke-dashoffset:-30}}
 /* legend on map */
+.legend[hidden]{display:none}
 .legend{min-height:0;background:var(--glass);border:1px solid var(--line);border-radius:10px;padding:8px 10px;display:grid;grid-auto-flow:column;grid-template-rows:repeat(var(--rows,9),auto);gap:1px 6px;max-width:100%;overflow:auto;box-shadow:0 4px 16px rgba(0,0,0,.12);backdrop-filter:blur(4px)}
 .leg-item{display:flex;align-items:center;gap:8px;padding:3px 6px;border-radius:5px;cursor:pointer;font-size:13px;white-space:nowrap}
 .leg-item:hover,.leg-item.on{background:var(--accent-soft)}
