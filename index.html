@@ -77,7 +77,7 @@ text{pointer-events:none}
 .mapcard .era{justify-content:flex-end}
 .mapcard h2{font-family:var(--display);font-weight:900;font-size:30px;line-height:1.2;margin:0;letter-spacing:.06em;text-wrap:balance}
 .mapcard .lead{margin:0;font-size:14px;max-width:26em}
-.mapcard .people{justify-content:flex-end}
+.mapcard .people{justify-content:end}
 .mapcard .info{margin-left:0}
 .blinks{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .blinks button{font:600 13px/1 var(--body);display:flex;align-items:center;gap:8px;border:1px solid var(--seal);background:var(--glass);color:var(--seal);padding:8px 14px 8px 10px;border-radius:999px;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15);backdrop-filter:blur(4px)}
@@ -111,7 +111,7 @@ aside{background:var(--surface);border-left:1px solid var(--line);display:flex;f
 .info:hover{border-color:var(--accent);color:var(--accent)}
 aside h2{font-family:var(--display);font-weight:900;font-size:24px;line-height:1.25;margin:0;text-wrap:balance;letter-spacing:.04em}
 .lead{font-family:var(--display);font-size:15px;line-height:1.65;margin:-4px 0 0;color:var(--muted)}
-.people{display:flex;gap:10px;flex-wrap:wrap;margin:0;padding:0;list-style:none}
+.people{display:grid;grid-template-columns:repeat(5,max-content);gap:10px;margin:0;padding:0;list-style:none}
 .person{display:flex;flex-direction:column;align-items:center;gap:2px;width:58px;cursor:default}
 .person .av{width:46px;height:46px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--line);background:var(--accent-soft)}
 .person .av img,.person .av svg{width:100%;height:100%;display:block;object-fit:cover}
@@ -234,6 +234,7 @@ aside h2{font-family:var(--display);font-weight:900;font-size:24px;line-height:1
       <button class="chip" id="t-dao" aria-pressed="false">五畿七道</button>
       <button class="chip" id="t-mk" aria-pressed="true">标注</button>
       </div>
+      <button class="layers-btn" id="legend-btn" aria-expanded="true" aria-controls="legend">图例 ▾</button>
       <div class="legend" id="legend" aria-label="势力图例"></div>
       </div>
       <div class="bview" id="bview" hidden>
@@ -709,6 +710,9 @@ const toggles = {};
 /* 图层栏默认折叠，点“图层”展开/收起 */
 const layersBtn = document.getElementById('layers-btn'), layersGroup = document.getElementById('layers-group');
 layersBtn.onclick = () => { const open = layersGroup.hidden; layersGroup.hidden = !open; layersBtn.setAttribute('aria-expanded', String(open)); layersBtn.textContent = open ? '图层 ▾' : '图层 ▸'; };
+/* 图例可折叠，默认展开 */
+const legendBtn = document.getElementById('legend-btn'), legendBox = document.getElementById('legend');
+legendBtn.onclick = () => { const open = legendBox.hidden; legendBox.hidden = !open; legendBtn.setAttribute('aria-expanded', String(open)); legendBtn.textContent = open ? '图例 ▾' : '图例 ▸'; };
 function bindToggle(id, fn){ const b=document.getElementById(id); const saved=store('jp-map-'+id); if (saved!==null) b.setAttribute('aria-pressed', saved); const apply=()=>{ toggles[id]=b.getAttribute('aria-pressed')==='true'; fn(toggles[id]); }; b.onclick=()=>{ b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true'); store('jp-map-'+id, b.getAttribute('aria-pressed')); apply(); }; apply(); }
 bindToggle('t-prov', on => { plabG.attr('display', on?null:'none'); applyLabelSizes(); });
 bindToggle('t-blk', () => applyLabelSizes());
