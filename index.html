@@ -588,6 +588,7 @@ function avatarSVG(p, i){
   const type = HEAD[p.look] ? p.look : 'warrior';
   const robe = type==='monk' ? '#6b4a2e' : col;
   return `<svg viewBox="0 0 80 80" aria-hidden="true"><rect width="80" height="80" fill="${d3.color(col).brighter(1.6)}"/>
+    <rect x="34" y="40" width="12" height="18" fill="#e9d2b4"/>
     <path d="M10 82c2-18 14-26 30-26s28 8 30 26z" fill="${robe}"/><path d="M33 56l7 12 7-12" fill="#f2ebe0"/>
     <circle cx="40" cy="36" r="12" fill="#e9d2b4"/>${HEAD[type]}</svg>`;
 }
