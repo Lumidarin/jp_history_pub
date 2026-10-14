@@ -1,0 +1,28 @@
+# D3
+
+`d3.min.js` 为原项目使用的 D3 7.8.5，本地打包避免播放依赖 CDN。
+
+- 下载地址：https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js
+- 项目：https://github.com/d3/d3
+- ISC 许可：Copyright 2010–2023 Mike Bostock
+
+Permission to use, copy, modify, and/or distribute this software for any purpose
+with or without fee is hereby granted, provided that the above copyright notice
+and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT,
+OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS
+ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+# 地理底图
+
+`land.geojson` 来自 Natural Earth 的 1:110m land 数据，公共领域。
+
+- 原始文件：https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_land.geojson
+- 许可：https://www.naturalearthdata.com/about/terms-of-use/
+
+底图用于地理定位。剧情中的势力区域、路线和队形属于教学示意，不能用于考古定位或边界研究。
