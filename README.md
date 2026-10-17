@@ -1,14 +1,9 @@
 # 历史放映室
 
-在地图上看历史：第一部为日本的历史（68章、114场战役），第二部为十字军（1095—1291，12章59幕，21幕战役示意）。
+在地图上看历史。在线版：https://lumidarin.github.io/jp_history_pub/
 
-在线版：https://lumidarin.github.io/jp_history_pub/
+- `index.html`：主页，两部入口。
+- `japan-power-map.html`：第一部，日本的历史（势力地图与战役详图）。
+- `crusades.html`：第二部，十字军（朗读放映）。
 
-点一次播放后，中文朗读、地图运镜、战役过程与章节可以自动推进。可暂停、调速、跳转或只看字幕。中文声音取决于浏览器和设备；没有中文声音时会提示并继续字幕播放。馆藏图片需联网，并附出处和年代说明。
-
-- `index.html`：两部总目录。
-- `japan.html`：第一部，保留日本势力地图并加入自动朗读和战役播放。
-- `crusades.html`：第二部，东方十字军主线。
-- `japan-power-map.html`：原日本势力地图。
-
-本仓库只放构建产物和战役卫星图，不放原书与研究材料。内容在源仓库中修改、校验、构建后，再将 `maps/dist/` 的HTML、JS、CSS、第三方许可说明和 `battles/` 同步到本仓库发布。
+本仓库只放构建产物，不放原书与研究材料。内容在源仓库修改、校验、构建后，把 `maps/dist/` 下的 `index.html`、`japan-power-map.html`、`crusades.html` 和 `battles/`、`crusades/`、`covers/` 同步到这里发布。
