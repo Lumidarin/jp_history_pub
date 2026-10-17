@@ -1,28 +1,65 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="在地图上看历史。日本的历史与十字军：中文朗读、地图运镜和战役过程自动播放。">
-  <title>历史放映室 · 在地图上看历史</title>
-  <link rel="stylesheet" href="cinema.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>历史放映室</title>
+<meta name="description" content="在地图上看历史：日本的历史，十字军。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap">
+<style>
+:root{--ink:#0e0f0f;--paper:#ece6da;--dim:rgba(236,230,218,.62);--line:rgba(236,230,218,.22);--accent:#c9a46a}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--ink);color:var(--paper);font-family:"Noto Serif SC","Songti SC","SimSun",serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.top{position:fixed;inset:0 0 auto;z-index:3;display:flex;justify-content:space-between;align-items:baseline;padding:28px clamp(20px,4vw,56px);pointer-events:none}
+.brand{font-weight:600;font-size:15px;letter-spacing:.42em}
+.top small{font-size:12px;letter-spacing:.3em;color:var(--dim)}
+main{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;min-height:100svh}
+.entry{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(28px,5vw,72px);isolation:isolate}
+.entry+.entry{border-left:1px solid var(--line)}
+.entry img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:grayscale(.55) brightness(.5) contrast(1.05);transform:scale(1.04);transition:filter 1.2s ease,transform 2.4s cubic-bezier(.2,.7,.2,1)}
+.entry::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(14,15,15,.92) 0%,rgba(14,15,15,.35) 45%,rgba(14,15,15,.55) 100%)}
+.entry:hover img,.entry:focus-visible img{filter:grayscale(0) brightness(.72) contrast(1.05);transform:scale(1)}
+.entry:focus-visible{outline:1px solid var(--accent);outline-offset:-12px}
+.num{font-size:13px;letter-spacing:.5em;color:var(--accent)}
+h2{font-weight:900;font-size:clamp(44px,6.4vw,92px);line-height:1.05;letter-spacing:.06em;margin:18px 0 22px}
+.sub{font-size:clamp(15px,1.3vw,18px);line-height:1.8;max-width:26em;color:var(--dim)}
+.meta{display:flex;flex-wrap:wrap;gap:0 28px;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;letter-spacing:.14em;color:var(--dim)}
+.go{margin-left:auto;color:var(--paper);letter-spacing:.3em;transition:letter-spacing .6s ease,color .6s ease}
+.go::after{content:" →"}
+.entry:hover .go{letter-spacing:.42em;color:var(--accent)}
+@media (max-width:760px){
+  main{grid-template-columns:1fr}
+  .entry{min-height:68svh;padding:28px 20px 32px}
+  .entry+.entry{border-left:0;border-top:1px solid var(--line)}
+  .entry:first-child{padding-top:88px}
+  .top{position:absolute;padding:24px 20px}
+  .meta{gap:4px 20px}
+  .go{margin-left:0;flex-basis:100%;margin-top:14px}
+}
+@media (prefers-reduced-motion:reduce){.entry img,.go{transition:none}}
+</style>
 </head>
-<body class="library">
-  <header class="library-head"><a class="brand" href="index.html"><span class="brand-mark">史</span>历史放映室</a><span class="head-note">地图 · 叙事 · 影像</span></header>
-  <main class="library-main">
-    <p class="eyebrow">HISTORY, IN MOTION</p>
-    <h1>让地图，<br>把历史讲下去。</h1>
-    <p class="library-intro">从列岛上的权力变迁，到地中海两岸的远征。<br>选一部，坐下来，让人物、路线与战场依次展开。</p>
-    <div class="volumes">
-      <article class="volume japan-cover">
-        <div class="cover-art" aria-hidden="true"><svg viewBox="0 0 640 260"><defs><radialGradient id="jg"><stop stop-color="#d5d8c3"/><stop offset="1" stop-color="#748c86"/></radialGradient></defs><circle cx="465" cy="80" r="76" fill="#b85e42" opacity=".24"/><g fill="url(#jg)" stroke="#d8d7bf" stroke-width="2" transform="rotate(-18 320 130)"><path d="M174 200l41-19 32 4 14 16-28 14-42-1z"/><path d="M243 174l26-28 47-8 30-16 31-23 34-14 24-30 30-15 27-9-6 31-30 26-15 27-27 10-22 29-52 18-29 12-44 2z"/><path d="M252 206l25-15 48-4-18 21-39 9z"/><path d="M459 25l25-28 15-10 20 6 29 12-16 18-19 14-27-6z"/></g><g fill="none" stroke="#db9a67" opacity=".5"><path d="M162 215Q245 85 449 42" stroke-dasharray="4 7"/><circle cx="330" cy="136" r="36"/><circle cx="330" cy="136" r="53"/></g></svg></div>
-        <div class="volume-body"><span class="volume-number">第一部 / VOLUME I</span><h2>日本的历史</h2><p class="volume-period">公元 20—1889 年 · 68 章</p><p>从稻作的传来，到武士政权与近代国家。沿用讲谈社《日本的历史》的讲解、势力地图和战役详图。</p><div class="volume-tags"><span>势力变迁</span><span>114 场战役</span><span>自动朗读</span></div><a class="watch-link" href="japan.html">进入第一部 <span>↗</span></a></div>
-      </article>
-      <article class="volume crusades-cover">
-        <div class="cover-art" aria-hidden="true"><svg viewBox="0 0 640 260"><defs><linearGradient id="cg" x2="0" y2="1"><stop stop-color="#e1be80"/><stop offset="1" stop-color="#8b745b"/></linearGradient></defs><circle cx="480" cy="60" r="60" fill="#d89b51" opacity=".16"/><path d="M0 219l120-17 95 9 87-14 123 15 215-18v66H0" fill="#143336"/><g fill="url(#cg)" opacity=".7"><path d="M230 200v-82h25v-16h12v16h16v82zM283 200v-50h90v50zM373 200v-94h18V88h12v18h22v94z"/><path d="M302 150v-45q24-50 48 0v45z"/></g><g fill="none" stroke="#dfb17a"><path d="M54 60Q200 12 365 85Q450 134 527 194" stroke-dasharray="5 8"/><circle cx="527" cy="194" r="7"/><circle cx="527" cy="194" r="21" opacity=".4"/></g><text x="45" y="242" fill="#9caeaa" font-size="11" letter-spacing="6">MEDITERRANEAN SEA</text></svg></div>
-        <div class="volume-body"><span class="volume-number">第二部 / VOLUME II</span><h2>十字军</h2><p class="volume-period">1095—1291 年 · 12 章</p><p>从克莱蒙的号召，到阿卡的陷落。跟着远征的路线，看信仰、补给、联盟与城墙如何改变结果。</p><div class="volume-tags"><span>59 幕叙事</span><span>地图运镜</span><span>战役过程</span></div><a class="watch-link" href="crusades.html">进入第二部 <span>↗</span></a></div>
-      </article>
-    </div>
-    <div class="library-note"><span>一次开始，连续观看</span><p>播放后自动中文朗读、推进地图并衔接章节。可随时暂停、选章，或只看字幕。中文声音取决于浏览器和设备；历史图片附原始出处。</p></div>
-  </main>
-  <footer class="library-footer">历史不是一条直线。地图让我们看见，它经过了哪些地方。</footer>
-</body></html>
+<body>
+<header class="top"><span class="brand">历史放映室</span><small>在地图上看历史</small></header>
+<main>
+  <a class="entry" href="japan-power-map.html">
+    <img src="covers/japan.webp" alt="" style="object-position:62% 60%">
+    <span class="num">第一部</span>
+    <h2>日本的历史</h2>
+    <p class="sub">从稻作传来到明治宪法，看列岛上的势力如何消长。</p>
+    <div class="meta"><span>公元20—1889年</span><span>68 章</span><span>114 场战役</span><span class="go">进入</span></div>
+  </a>
+  <a class="entry" href="crusades.html">
+    <img src="covers/crusades.webp" alt="" style="object-position:60% 70%">
+    <span class="num">第二部</span>
+    <h2>十字军</h2>
+    <p class="sub">第二次十字军：两位国王，一座没攻下的城</p>
+    <div class="meta"><span>1144—1154年</span><span>11 幕</span><span>朗读放映</span><span class="go">进入</span></div>
+  </a>
+</main>
+</body>
+</html>
